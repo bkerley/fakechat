@@ -1,27 +1,40 @@
 <h1>fake chat</h1>
 
-<% if defined? @was_said %>
-  <p>
-    You:
-    <strong><%= @was_said %></strong>
-  </p>
-<% end %>
-
-<% if defined? @reply %>
-  <p>
-    Them:
-    <strong><%= @reply %></strong>
-  </p>
-
-  <% if @reply == "Sounds interesting." %>
+<div id="transcript">
+  <% if defined? @was_said %>
     <p>
-      Narrator:
-      <strong>It wasn't.</strong>
+      You:
+      <strong><%= @was_said %></strong>
     </p>
   <% end %>
-<% end %>
+
+  <% if defined? @reply %>
+    <p>
+      Them:
+      <strong><%= @reply %></strong>
+    </p>
+
+    <% if @reply == "Sounds interesting." %>
+      <p>
+        Narrator:
+        <strong>It wasn't.</strong>
+      </p>
+    <% end %>
+  <% end %>
+</div>
 
 <%= form_tag chats_path, method: :post do %>
   <%= text_field_tag :chat, '', placeholder: "chat here" %>
   <%= submit_tag 'say something' %>
 <% end %>
+
+<script type="text/html" id="template">
+  <p>
+    You:
+    <strong>WAS_SAID</strong>
+  </p>
+  <p>
+    Them:
+    <strong>REPLY</strong>
+  </p>
+</script>

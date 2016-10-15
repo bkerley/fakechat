@@ -1,6 +1,11 @@
 // Place all the styles related to the chats controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div#transcript {
+    p {
+        margin: 0.1em auto;
+    }
+}
 input[type="text"] {
     width: 400px;
 }
