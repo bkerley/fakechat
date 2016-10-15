@@ -1,2 +1,27 @@
-<h1>Chats#index</h1>
-<p>Find me in app/views/chats/index.html.erb</p>
+<h1>fake chat</h1>
+
+<% if defined? @was_said %>
+  <p>
+    You:
+    <strong><%= @was_said %></strong>
+  </p>
+<% end %>
+
+<% if defined? @reply %>
+  <p>
+    Them:
+    <strong><%= @reply %></strong>
+  </p>
+
+  <% if @reply == "Sounds interesting." %>
+    <p>
+      Narrator:
+      <strong>It wasn't.</strong>
+    </p>
+  <% end %>
+<% end %>
+
+<%= form_tag chats_path, method: :post do %>
+  <%= text_field_tag :chat, '', placeholder: "chat here" %>
+  <%= submit_tag 'say something' %>
+<% end %>
